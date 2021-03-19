@@ -6,6 +6,21 @@ import RenameEntries from "./components/rename-entries/rename-entries";
 
 import "./index.less";
 
+const _exampleEntries:RenameItem[]=[
+  {
+    name:"[Erai-raws] Non Non Biyori Nonstop - 09 [1080p][Multiple Subtitle].mkv",
+    shortname:"nonnonbiyorinonstop"
+  },
+  {
+    name:"[SubsPlease] Azur Lane - Bisoku Zenshin! - 09 (1080p) [463D748A].mkv",
+    shortname:"azurlane"
+  },
+  {
+    name:"[Erai-raws] Non Non Biyori Nonstop - 10 [1080p][Multiple Subtitle].mkv",
+    shortname:"nonnonbiyorinonstop"
+  }
+];
+
 function RemoteRenamerIndex():JSX.Element
 {
   return <>
@@ -13,7 +28,7 @@ function RemoteRenamerIndex():JSX.Element
       <RenamerInput className="rename-input"/>
     </div>
 
-    <RenameEntries/>
+    <RenameEntries items={_exampleEntries}/>
   </>;
 }
 

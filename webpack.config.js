@@ -60,7 +60,8 @@ module.exports={
     resolve:{
         extensions:[".tsx",".ts",".js",".jsx"],
         alias:{
-            css:`${__dirname}/web/css`
+            css:`${__dirname}/web/css`,
+            web:`${__dirname}/web`
         }
     },
 

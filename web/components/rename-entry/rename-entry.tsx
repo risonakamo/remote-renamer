@@ -2,12 +2,18 @@ import React from "react";
 
 import "./rename-entry.less";
 
-export default function RenameEntry():JSX.Element
+interface RenameEntryProps
+{
+  entry:RenameItem
+}
+
+/** a single rename entry. */
+export default function RenameEntry(props:RenameEntryProps):JSX.Element
 {
   return <div className="rename-entry">
     <div className="wrap">
-      <p className="name">[Erai-raws] Non Non Biyori Nonstop - 09 [1080p][Multiple Subtitle].mkv</p>
-      <p className="short-name">nonnonbiyorinonstop</p>
+      <p className="name">{props.entry.name}</p>
+      <p className="short-name">{props.entry.shortname}</p>
 
       <div className="rename-zone">
         <img src="/assets/edit-entry-button_PLACEHOLDER.png"/>
