@@ -2,13 +2,15 @@
 @selected-background: #80d1ef;
 @faded-background: #e9e9e9;
 @bottom-line: 1px solid rgb(21 21 21 / 63%);
+@hover-background: #f6f8fa;
 
 .rename-entry
 {
     width: 70%;
     margin: auto;
-    padding: 10px;
     border-radius: 2px;
+    position: relative;
+    transition: background-color .2s;
 
     &.selected
     {
@@ -19,6 +21,17 @@
     {
         opacity: .5;
         background: @faded-background;
+    }
+
+    &:hover
+    {
+        background-color: @hover-background;
+        cursor: pointer;
+
+        .button
+        {
+            opacity: 1;
+        }
     }
 
     .wrap
@@ -38,6 +51,25 @@
             font-style: italic;
             font-weight: 300;
             padding-left: 10px;
+        }
+    }
+
+    .button
+    {
+        position: absolute;
+        opacity: 0;
+        transition: opacity .2s;
+
+        &.copy-button
+        {
+            top: 8px;
+            left: -57px;
+        }
+
+        &.edit-entry-button
+        {
+            top: 9px;
+            right: -54px;
         }
     }
 }

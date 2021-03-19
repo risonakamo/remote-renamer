@@ -15,6 +15,7 @@ function RemoteRenamerIndex():JSX.Element
 
     <div className="entries-zone">
       <RenameEntry/>
+      <RenameEntry/>
     </div>
   </>;
 }
