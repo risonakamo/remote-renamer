@@ -1,0 +1,43 @@
+//TEMPCOLOUR
+@selected-background: #80d1ef;
+@faded-background: #e9e9e9;
+@bottom-line: 1px solid rgb(21 21 21 / 63%);
+
+.rename-entry
+{
+    width: 70%;
+    margin: auto;
+    padding: 10px;
+    border-radius: 2px;
+
+    &.selected
+    {
+        background-color: @selected-background;
+    }
+
+    &.faded
+    {
+        opacity: .5;
+        background: @faded-background;
+    }
+
+    .wrap
+    {
+        border-bottom: @bottom-line;
+        padding: 10px;
+
+        .name
+        {
+            font-size: 21px;
+            margin-bottom: 4px;
+        }
+
+        .short-name
+        {
+            font-size: 14px;
+            font-style: italic;
+            font-weight: 300;
+            padding-left: 10px;
+        }
+    }
+}
