@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import RenamerInput from "./components/renamer-input/renamer-input";
-import RenameEntry from "./components/rename-entry/rename-entry";
+import RenameEntries from "./components/rename-entries/rename-entries";
 
 import "./index.less";
 
@@ -13,11 +13,7 @@ function RemoteRenamerIndex():JSX.Element
       <RenamerInput className="rename-input"/>
     </div>
 
-    <div className="entries-zone">
-      <h2 className="rename-entry-header">nonnonbiyorinonstop</h2>
-      <RenameEntry/>
-      <RenameEntry/>
-    </div>
+    <RenameEntries/>
   </>;
 }
 

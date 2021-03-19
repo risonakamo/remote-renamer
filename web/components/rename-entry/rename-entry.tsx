@@ -15,7 +15,6 @@ export default function RenameEntry():JSX.Element
       </div>
     </div>
 
-    <img src="/assets/copy-button_PLACEHOLDER.png" className="button copy-button"/>
     <img src="/assets/edit-entry-button_PLACEHOLDER.png" className="button edit-entry-button"/>
   </div>;
 }
