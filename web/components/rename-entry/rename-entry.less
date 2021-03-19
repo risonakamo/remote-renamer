@@ -1,3 +1,5 @@
+@import (reference) "css/big-rounded-input.less";
+
 //TEMPCOLOUR
 @selected-background: #80d1ef;
 @faded-background: #e9e9e9;
@@ -51,6 +53,18 @@
             font-style: italic;
             font-weight: 300;
             padding-left: 10px;
+        }
+
+        .rename-zone
+        {
+            text-align: center;
+
+            .entry-rename
+            {
+                .rounded-input();
+                width: 100%;
+                box-sizing: border-box;
+            }
         }
     }
 

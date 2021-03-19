@@ -1,15 +1,6 @@
-@import (reference) "top/colours.less";
+@import (reference) "css/big-rounded-input.less";
 
 .renamer-input
 {
-    padding: 10px;
-    font-size: 18px;
-    border-radius: 5px;
-    border: 1px solid @light-grey;
-    color: fade(@main-dark,80%);
-
-    &:focus
-    {
-        color: @main-dark;
-    }
+    .rounded-input();
 }
