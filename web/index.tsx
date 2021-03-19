@@ -14,6 +14,7 @@ function RemoteRenamerIndex():JSX.Element
     </div>
 
     <div className="entries-zone">
+      <h2 className="rename-entry-header">nonnonbiyorinonstop</h2>
       <RenameEntry/>
       <RenameEntry/>
     </div>
