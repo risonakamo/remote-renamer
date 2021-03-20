@@ -75,11 +75,23 @@
                 display: block;
             }
 
-            .entry-rename
+            .input-wrap
             {
-                .rounded-input();
-                width: 100%;
-                box-sizing: border-box;
+                position: relative;
+
+                .entry-rename
+                {
+                    .rounded-input();
+                    width: 100%;
+                    box-sizing: border-box;
+                }
+
+                .submit-button
+                {
+                    position: absolute;
+                    top: -1px;
+                    right: -64px;
+                }
             }
         }
     }

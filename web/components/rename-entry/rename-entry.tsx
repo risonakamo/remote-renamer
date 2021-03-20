@@ -82,7 +82,10 @@ export default function RenameEntry(props:RenameEntryProps):JSX.Element
 
       <div className={cx("rename-zone",renameZoneClass)}>
         <img src="/assets/edit-entry-button_PLACEHOLDER.png"/>
-        <input className="entry-rename" ref={renameInput}/>
+        <div className="input-wrap">
+          <input className="entry-rename" ref={renameInput}/>
+          <img src="/assets/submit_PLACEHOLDER.png" className="submit-button"/>
+        </div>
       </div>
     </div>
 
