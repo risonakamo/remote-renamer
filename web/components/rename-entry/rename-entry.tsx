@@ -11,6 +11,9 @@ interface RenameEntryProps
 
   // onclick returns the name of the entry
   onClick?(name:string):void
+
+  // triggers on X button
+  onDeselect?():void
 }
 
 /** a single rename entry. */
@@ -24,6 +27,19 @@ export default function RenameEntry(props:RenameEntryProps):JSX.Element
     }
   }
 
+  function rightButtonHandler():void
+  {
+    if (props.selected && props.onDeselect)
+    {
+      props.onDeselect();
+    }
+
+    else if (!props.selected && props.onClick)
+    {
+      clickHandler();
+    }
+  }
+
   // class on top level
   var topClasses={
     selected:props.selected,
@@ -34,8 +50,20 @@ export default function RenameEntry(props:RenameEntryProps):JSX.Element
     showing:props.selected
   };
 
-  return <div className={cx("rename-entry",topClasses)} onClick={clickHandler}>
-    <div className="wrap">
+  var editOrCloseButton:string;
+
+  if (props.selected)
+  {
+    editOrCloseButton="/assets/x_PLACEHOLDER.png";
+  }
+
+  else
+  {
+    editOrCloseButton="/assets/edit-entry-button_PLACEHOLDER.png";
+  }
+
+  return <div className={cx("rename-entry",topClasses)}>
+    <div className="wrap" onClick={clickHandler}>
       <p className="name">{props.entry.name}</p>
       <p className="short-name">{props.entry.shortname}</p>
 
@@ -45,6 +73,7 @@ export default function RenameEntry(props:RenameEntryProps):JSX.Element
       </div>
     </div>
 
-    <img src="/assets/edit-entry-button_PLACEHOLDER.png" className="button edit-entry-button"/>
+    <img src={editOrCloseButton} className="button edit-entry-button"
+      onClick={rightButtonHandler}/>
   </div>;
 }

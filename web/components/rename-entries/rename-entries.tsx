@@ -18,18 +18,24 @@ export default function RenameEntries(props:RenameEntriesProps):JSX.Element
 {
   const [theSelectedItem,setSelectedItem]=useState<string|null>(null);
 
+  /** unset current selected item */
+  function deselect():void
+  {
+    setSelectedItem(null);
+  }
+
   /** given rename items and a shortname, create RenameEntry elements for each item
    *  and group them into a shortname-group */
   function createShortnameGroup(items:RenameItem[],shortname:string):JSX.Element
   {
-    return <div className="shortname-group">
+    return <div className="shortname-group" key={shortname}>
       <h2 className="rename-entry-header">{shortname}</h2>
       {_.map(items,(x:RenameItem,i:number)=>{
         var selected:boolean=x.name==theSelectedItem;
         var faded:boolean=theSelectedItem!=null && !selected;
 
         return <RenameEntry entry={x} key={i} selected={selected}
-          onClick={setSelectedItem} faded={faded}/>;
+          onClick={setSelectedItem} faded={faded} onDeselect={deselect}/>;
       })}
     </div>;
   }

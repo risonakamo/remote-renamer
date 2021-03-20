@@ -17,6 +17,11 @@
     &.selected
     {
         background-color: @selected-background;
+
+        .button
+        {
+            opacity: 1;
+        }
     }
 
     &.faded
@@ -33,11 +38,6 @@
         &.selected
         {
             background-color: @selected-background;
-
-            .button
-            {
-                display: none;
-            }
         }
 
         .button
