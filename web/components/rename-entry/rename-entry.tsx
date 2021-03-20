@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useRef,useEffect} from "react";
 import cx from "classnames";
 
 import "./rename-entry.less";
@@ -19,7 +19,20 @@ interface RenameEntryProps
 /** a single rename entry. */
 export default function RenameEntry(props:RenameEntryProps):JSX.Element
 {
-  function clickHandler():void
+  const renameInput=useRef<HTMLInputElement>(null);
+
+  // on selected change to true
+  useEffect(()=>{
+    if (props.selected)
+    {
+      (async ()=>{
+        renameInput.current!.value=await navigator.clipboard.readText();
+        renameInput.current!.focus();
+      })();
+    }
+  },[props.selected]);
+
+  async function clickHandler():Promise<void>
   {
     if (props.onClick)
     {
@@ -69,7 +82,7 @@ export default function RenameEntry(props:RenameEntryProps):JSX.Element
 
       <div className={cx("rename-zone",renameZoneClass)}>
         <img src="/assets/edit-entry-button_PLACEHOLDER.png"/>
-        <input className="entry-rename"/>
+        <input className="entry-rename" ref={renameInput}/>
       </div>
     </div>
 
