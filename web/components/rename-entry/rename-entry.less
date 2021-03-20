@@ -30,6 +30,16 @@
         background-color: @hover-background;
         cursor: pointer;
 
+        &.selected
+        {
+            background-color: @selected-background;
+
+            .button
+            {
+                display: none;
+            }
+        }
+
         .button
         {
             opacity: 1;
