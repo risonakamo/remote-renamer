@@ -14,6 +14,10 @@ interface RenameEntryProps
 
   // triggers on X button
   onDeselect?():void
+
+  // triggers on submit action. submit also triggers de-select.
+  // includes user inputed text.
+  onSubmit?(text:string):void
 }
 
 /** a single rename entry. */
@@ -32,24 +36,44 @@ export default function RenameEntry(props:RenameEntryProps):JSX.Element
     }
   },[props.selected]);
 
+  /** for clicking body of entry */
   async function clickHandler():Promise<void>
   {
-    if (props.onClick)
+    props.onClick?.(props.entry.name);
+  }
+
+  /** clicking top right button (close or open) */
+  function rightButtonHandler():void
+  {
+    // if selected, perform the deselect action (x button)
+    if (props.selected)
     {
-      props.onClick(props.entry.name);
+      props.onDeselect?.();
+    }
+
+    // otherwise identical to clicking the body
+    else if (!props.selected)
+    {
+      clickHandler?.();
     }
   }
 
-  function rightButtonHandler():void
+  /** clicking submit button */
+  function submitHandler(e:React.MouseEvent|React.KeyboardEvent):void
   {
-    if (props.selected && props.onDeselect)
-    {
-      props.onDeselect();
-    }
+    e.stopPropagation();
+    props.onSubmit?.(renameInput.current!.value);
+    props.onDeselect?.();
+  }
 
-    else if (!props.selected && props.onClick)
+  /** key control in rename input */
+  function renameEntryKeyHandler(e:React.KeyboardEvent):void
+  {
+    // perform submit on enter key.
+    if (e.key=="Enter")
     {
-      clickHandler();
+      e.preventDefault();
+      submitHandler(e);
     }
   }
 
@@ -83,8 +107,9 @@ export default function RenameEntry(props:RenameEntryProps):JSX.Element
       <div className={cx("rename-zone",renameZoneClass)}>
         <img src="/assets/edit-entry-button_PLACEHOLDER.png"/>
         <div className="input-wrap">
-          <input className="entry-rename" ref={renameInput}/>
-          <img src="/assets/submit_PLACEHOLDER.png" className="submit-button"/>
+          <input className="entry-rename" ref={renameInput} onKeyDown={renameEntryKeyHandler}/>
+          <img src="/assets/submit_PLACEHOLDER.png" className="submit-button"
+            onClick={submitHandler}/>
         </div>
       </div>
     </div>
