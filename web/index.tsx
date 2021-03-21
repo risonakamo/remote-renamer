@@ -1,8 +1,10 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import ReactDOM from "react-dom";
 
 import RenamerInput from "components/renamer-input/renamer-input";
 import RenameEntries from "components/rename-entries/rename-entries";
+
+import {searchRenameItems} from "web/lib/renamer-api";
 
 import "./index.less";
 
@@ -23,12 +25,20 @@ const _exampleEntries:RenameItem[]=[
 
 function RemoteRenamerIndex():JSX.Element
 {
+  const [theCurrentItems,setCurrentItems]=useState<RenameItem[]>([]);
+
+  useEffect(()=>{
+    (async ()=>{
+      setCurrentItems(await searchRenameItems(""));
+    })();
+  },[]);
+
   return <>
     <div className="input-zone">
       <RenamerInput className="rename-input"/>
     </div>
 
-    <RenameEntries items={_exampleEntries}/>
+    <RenameEntries items={theCurrentItems}/>
   </>;
 }
 
