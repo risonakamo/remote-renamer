@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import RenamerInput from "./components/renamer-input/renamer-input";
-import RenameEntries from "./components/rename-entries/rename-entries";
+import RenamerInput from "components/renamer-input/renamer-input";
+import RenameEntries from "components/rename-entries/rename-entries";
 
 import "./index.less";
 

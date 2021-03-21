@@ -3,7 +3,7 @@ import _ from "lodash";
 
 import {groupEntriesByShortName} from "web/lib/entry-helpers";
 
-import RenameEntry from "../rename-entry/rename-entry";
+import RenameEntry from "components/rename-entry/rename-entry";
 
 import "./rename-entries.less";
 
