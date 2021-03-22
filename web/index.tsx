@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from "react";
 import ReactDOM from "react-dom";
 
-import RenamerInput from "components/renamer-input/renamer-input";
+import RenamerSearch from "components/renamer-search/renamer-search";
 import RenameEntries from "components/rename-entries/rename-entries";
 
 import {searchRenameItems} from "web/lib/renamer-api";
@@ -35,7 +35,7 @@ function RemoteRenamerIndex():JSX.Element
 
   return <>
     <div className="input-zone">
-      <RenamerInput className="rename-input"/>
+      <RenamerSearch className="rename-input"/>
     </div>
 
     <RenameEntries items={theCurrentItems}/>
