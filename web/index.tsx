@@ -8,21 +8,6 @@ import {searchRenameItems} from "web/lib/renamer-api";
 
 import "./index.less";
 
-const _exampleEntries:RenameItem[]=[
-  {
-    name:"[Erai-raws] Non Non Biyori Nonstop - 09 [1080p][Multiple Subtitle].mkv",
-    shortname:"nonnonbiyorinonstop"
-  },
-  {
-    name:"[SubsPlease] Azur Lane - Bisoku Zenshin! - 09 (1080p) [463D748A].mkv",
-    shortname:"azurlane"
-  },
-  {
-    name:"[Erai-raws] Non Non Biyori Nonstop - 10 [1080p][Multiple Subtitle].mkv",
-    shortname:"nonnonbiyorinonstop"
-  }
-];
-
 function RemoteRenamerIndex():JSX.Element
 {
   const [theCurrentItems,setCurrentItems]=useState<RenameItem[]>([]);
@@ -33,9 +18,15 @@ function RemoteRenamerIndex():JSX.Element
     })();
   },[]);
 
+  /** set the current items to items found by a query */
+  async function searchItems(query:string):Promise<void>
+  {
+    setCurrentItems(await searchRenameItems(query));
+  }
+
   return <>
     <div className="input-zone">
-      <RenamerSearch className="rename-input"/>
+      <RenamerSearch className="rename-input" onSubmit={searchItems}/>
     </div>
 
     <RenameEntries items={theCurrentItems}/>
