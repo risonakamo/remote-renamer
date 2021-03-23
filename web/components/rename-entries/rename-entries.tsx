@@ -1,5 +1,6 @@
 import React,{useState} from "react";
 import _ from "lodash";
+import cx from "classnames";
 
 import {groupEntriesByShortName} from "web/lib/entry-helpers";
 
@@ -44,7 +45,14 @@ export default function RenameEntries(props:RenameEntriesProps):JSX.Element
 
   var groupedEntriesElements:JSX.Element[]=_.map(groupedEntries,createShortnameGroup);
 
+  var noEntriesClasses={
+    showing:!groupedEntriesElements.length
+  };
+
   return <div className="rename-entries">
+    <div className={cx("no-entries",noEntriesClasses)}>
+      <p>no entries.</p>
+    </div>
     {groupedEntriesElements}
   </div>;
 }
