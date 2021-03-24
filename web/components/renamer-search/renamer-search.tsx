@@ -1,6 +1,8 @@
 import React,{useEffect,useRef} from "react";
 import cx from "classnames";
 
+import ToggleButton from "components/toggle-button/toggle-button";
+
 import "./renamer-search.less";
 
 interface RenamerSearchProps
@@ -24,6 +26,11 @@ export default function RenamerSearch(props:RenamerSearchProps):JSX.Element
     props.onSubmit?.((e.currentTarget as HTMLInputElement).value);
   }
 
-  return <input className={cx("renamer-search",props.className)}
-    onChange={changeHandler} ref={theInput}/>;
+  return <div className="renamer-search-wrap">
+    <div className="button-zone">
+      <ToggleButton/>
+    </div>
+    <input className={cx("renamer-search",props.className)}
+      onChange={changeHandler} ref={theInput}/>
+  </div>;
 }
