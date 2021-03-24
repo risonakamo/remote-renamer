@@ -28,7 +28,8 @@ export default function RenamerSearch(props:RenamerSearchProps):JSX.Element
 
   return <div className="renamer-search-wrap">
     <div className="button-zone">
-      <ToggleButton/>
+      <ToggleButton activeText="SHORTNAME ON" inactiveText="SHORTNAME OFF"
+        initialState={true}/>
     </div>
     <input className={cx("renamer-search",props.className)}
       onChange={changeHandler} ref={theInput}/>
