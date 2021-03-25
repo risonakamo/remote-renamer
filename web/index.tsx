@@ -14,14 +14,14 @@ function RemoteRenamerIndex():JSX.Element
 
   useEffect(()=>{
     (async ()=>{
-      setCurrentItems(await searchRenameItems(""));
+      setCurrentItems(await searchRenameItems("",true));
     })();
   },[]);
 
   /** set the current items to items found by a query */
   async function searchItems(query:string):Promise<void>
   {
-    setCurrentItems(await searchRenameItems(query));
+    setCurrentItems(await searchRenameItems(query,true));
   }
 
   return <>
