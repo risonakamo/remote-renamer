@@ -19,9 +19,9 @@ function RemoteRenamerIndex():JSX.Element
   },[]);
 
   /** set the current items to items found by a query */
-  async function searchItems(query:string):Promise<void>
+  async function searchItems(query:string,simplify:boolean):Promise<void>
   {
-    setCurrentItems(await searchRenameItems(query,true));
+    setCurrentItems(await searchRenameItems(query,simplify));
   }
 
   return <>

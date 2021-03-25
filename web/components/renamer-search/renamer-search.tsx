@@ -1,4 +1,4 @@
-import React,{useEffect,useRef} from "react";
+import React,{useEffect,useRef,useState} from "react";
 import cx from "classnames";
 
 import ToggleButton from "components/toggle-button/toggle-button";
@@ -9,27 +9,37 @@ interface RenamerSearchProps
 {
   className?:string
 
-  onSubmit?(input:string):void
+  onSubmit?(input:string,simplify:boolean):void
 }
 
 export default function RenamerSearch(props:RenamerSearchProps):JSX.Element
 {
   const theInput=useRef<HTMLInputElement>(null);
+  const [shortnameActive,setShortnameActive]=useState<boolean>(true);
 
+  // focus this input on page load
   useEffect(()=>{
     theInput.current?.focus();
   },[]);
 
+  // call change handler when shortname active changes
+  useEffect(()=>{
+    changeHandler();
+  },[shortnameActive]);
+
   /** handle input change event */
-  function changeHandler(e:React.ChangeEvent):void
+  function changeHandler():void
   {
-    props.onSubmit?.((e.currentTarget as HTMLInputElement).value);
+    props.onSubmit?.(
+      theInput.current!.value,
+      shortnameActive
+    );
   }
 
   return <div className="renamer-search-wrap">
     <div className="button-zone">
       <ToggleButton activeText="SHORTNAME ON" inactiveText="SHORTNAME OFF"
-        initialState={true}/>
+        initialState={true} onToggle={setShortnameActive}/>
     </div>
     <input className={cx("renamer-search",props.className)}
       onChange={changeHandler} ref={theInput}/>
