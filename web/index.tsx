@@ -11,6 +11,7 @@ import "./index.less";
 function RemoteRenamerIndex():JSX.Element
 {
   const [theCurrentItems,setCurrentItems]=useState<RenameItem[]>([]);
+  const [theSelectedItem,setSelectedItem]=useState<string|null>(null);
 
   useEffect(()=>{
     (async ()=>{
@@ -24,12 +25,19 @@ function RemoteRenamerIndex():JSX.Element
     setCurrentItems(await searchRenameItems(query,simplify));
   }
 
+  /** deselect item */
+  function deselectItem():void
+  {
+    setSelectedItem(null);
+  }
+
   return <>
     <div className="input-zone">
       <RenamerSearch className="rename-input" onSubmit={searchItems}/>
     </div>
 
-    <RenameEntries items={theCurrentItems}/>
+    <RenameEntries items={theCurrentItems} selectedItem={theSelectedItem} onSelectItem={setSelectedItem}
+      onDeselectItem={deselectItem}/>
   </>;
 }
 
