@@ -23,6 +23,7 @@ function RemoteRenamerIndex():JSX.Element
   async function searchItems(query:string,simplify:boolean):Promise<void>
   {
     setCurrentItems(await searchRenameItems(query,simplify));
+    deselectItem();
   }
 
   /** deselect item */
