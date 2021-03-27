@@ -36,9 +36,14 @@ export default function RenameEntry(props:RenameEntryProps):JSX.Element
     }
   },[props.selected]);
 
-  /** for clicking body of entry */
+  /** for clicking body of entry. does nothing when selected. */
   async function clickHandler():Promise<void>
   {
+    if (props.selected)
+    {
+      return;
+    }
+
     props.onClick?.(props.entry.name);
   }
 

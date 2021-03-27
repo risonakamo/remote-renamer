@@ -13,10 +13,12 @@
     border-radius: 2px;
     position: relative;
     transition: background-color .2s;
+    cursor: pointer;
 
     &.selected
     {
         background-color: @selected-background;
+        cursor: default;
 
         .button
         {
@@ -33,7 +35,6 @@
     &:hover
     {
         background-color: @hover-background;
-        cursor: pointer;
 
         &.selected
         {
@@ -91,6 +92,7 @@
                     position: absolute;
                     top: -1px;
                     right: -64px;
+                    cursor: pointer;
                 }
             }
         }
@@ -101,6 +103,7 @@
         position: absolute;
         opacity: 0;
         transition: opacity .2s;
+        cursor: pointer;
 
         &.copy-button
         {
