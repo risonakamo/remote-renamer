@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import RenamerSearch from "components/renamer-search/renamer-search";
 import RenameEntries from "components/rename-entries/rename-entries";
 
-import {searchRenameItems} from "web/lib/renamer-api";
+import {searchRenameItems,renameItem} from "web/lib/renamer-api";
 
 import "./index.less";
 
@@ -32,13 +32,19 @@ function RemoteRenamerIndex():JSX.Element
     setSelectedItem(null);
   }
 
+  /** do rename item with api */
+  function doRenameItem(target:string,newName:string):void
+  {
+    // renameItem(target,newName);
+  }
+
   return <>
     <div className="input-zone">
       <RenamerSearch className="rename-input" onSubmit={searchItems}/>
     </div>
 
     <RenameEntries items={theCurrentItems} selectedItem={theSelectedItem} onSelectItem={setSelectedItem}
-      onDeselectItem={deselectItem}/>
+      onDeselectItem={deselectItem} onSubmit={doRenameItem}/>
   </>;
 }
 

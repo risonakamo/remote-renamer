@@ -17,6 +17,7 @@ interface RenameEntriesProps
 
   onSelectItem(itemName:string):void
   onDeselectItem():void
+  onSubmit(entry:string,newName:string):void
 }
 
 /** manages multiple rename entries. */
@@ -33,7 +34,8 @@ export default function RenameEntries(props:RenameEntriesProps):JSX.Element
         var faded:boolean=props.selectedItem!=null && !selected;
 
         return <RenameEntry entry={x} key={i} selected={selected}
-          onClick={props.onSelectItem} faded={faded} onDeselect={props.onDeselectItem}/>;
+          onClick={props.onSelectItem} faded={faded} onDeselect={props.onDeselectItem}
+          onSubmit={props.onSubmit}/>;
       })}
     </div>;
   }

@@ -16,8 +16,8 @@ interface RenameEntryProps
   onDeselect?():void
 
   // triggers on submit action. submit also triggers de-select.
-  // includes user inputed text.
-  onSubmit?(text:string):void
+  // includes user inputed text and this entry's name.
+  onSubmit?(entryName:string,inputText:string):void
 }
 
 /** a single rename entry. */
@@ -67,7 +67,7 @@ export default function RenameEntry(props:RenameEntryProps):JSX.Element
   function submitHandler(e:React.MouseEvent|React.KeyboardEvent):void
   {
     e.stopPropagation();
-    props.onSubmit?.(renameInput.current!.value);
+    props.onSubmit?.(props.entry.name,renameInput.current!.value);
     props.onDeselect?.();
   }
 
