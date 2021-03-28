@@ -9,13 +9,15 @@ interface RenamerSearchProps
 {
   className?:string
 
+  shortnameActive:boolean
+
   onSubmit?(input:string,simplify:boolean):void
+  onShortnameToggle(active:boolean):void
 }
 
 export default function RenamerSearch(props:RenamerSearchProps):JSX.Element
 {
   const theInput=useRef<HTMLInputElement>(null);
-  const [shortnameActive,setShortnameActive]=useState<boolean>(true);
 
   // focus this input on page load
   useEffect(()=>{
@@ -25,21 +27,21 @@ export default function RenamerSearch(props:RenamerSearchProps):JSX.Element
   // call change handler when shortname active changes
   useEffect(()=>{
     changeHandler();
-  },[shortnameActive]);
+  },[props.shortnameActive]);
 
   /** handle input change event */
   function changeHandler():void
   {
     props.onSubmit?.(
       theInput.current!.value,
-      shortnameActive
+      props.shortnameActive
     );
   }
 
   return <div className="renamer-search-wrap">
     <div className="button-zone">
       <ToggleButton activeText="SHORTNAME ON" inactiveText="SHORTNAME OFF"
-        initialState={true} onToggle={setShortnameActive}/>
+        initialState={true} onToggle={props.onShortnameToggle}/>
     </div>
     <input className={cx("renamer-search",props.className)}
       onChange={changeHandler} ref={theInput}/>
