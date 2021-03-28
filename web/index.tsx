@@ -1,7 +1,7 @@
 import React,{useEffect,useState,useRef} from "react";
 import ReactDOM from "react-dom";
 
-import RenamerSearch from "components/renamer-search/renamer-search";
+import RenamerSearch,{RenamerSearchRef} from "components/renamer-search/renamer-search";
 import RenameEntries from "components/rename-entries/rename-entries";
 
 import {searchRenameItems,renameItem} from "web/lib/renamer-api";
@@ -15,6 +15,7 @@ function RemoteRenamerIndex():JSX.Element
   const [shortnameActive,setShortnameActive]=useState<boolean>(true);
 
   const lastQuery=useRef<string>("");
+  const theRenamerSearch=useRef<RenamerSearchRef>(null);
 
   useEffect(()=>{
     (async ()=>{
@@ -41,12 +42,13 @@ function RemoteRenamerIndex():JSX.Element
   {
     await renameItem(target,newName);
     searchItems(lastQuery.current,shortnameActive);
+    theRenamerSearch.current?.focusInput();
   }
 
   return <>
     <div className="input-zone">
       <RenamerSearch className="rename-input" onSubmit={searchItems} shortnameActive={shortnameActive}
-        onShortnameToggle={setShortnameActive}/>
+        onShortnameToggle={setShortnameActive} ref={theRenamerSearch}/>
     </div>
 
     <RenameEntries items={theCurrentItems} selectedItem={theSelectedItem} onSelectItem={setSelectedItem}

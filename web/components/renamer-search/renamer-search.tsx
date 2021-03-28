@@ -1,4 +1,4 @@
-import React,{useEffect,useRef,useState} from "react";
+import React,{useEffect,useRef,forwardRef,useImperativeHandle} from "react";
 import cx from "classnames";
 
 import ToggleButton from "components/toggle-button/toggle-button";
@@ -15,9 +15,19 @@ interface RenamerSearchProps
   onShortnameToggle(active:boolean):void
 }
 
-export default function RenamerSearch(props:RenamerSearchProps):JSX.Element
+export interface RenamerSearchRef
+{
+  focusInput():void
+}
+
+export default forwardRef(RenamerSearch);
+function RenamerSearch(props:RenamerSearchProps,ref:React.Ref<RenamerSearchRef>):JSX.Element
 {
   const theInput=useRef<HTMLInputElement>(null);
+
+  useImperativeHandle(ref,()=>({
+    focusInput
+  }));
 
   // focus this input on page load
   useEffect(()=>{
@@ -36,6 +46,12 @@ export default function RenamerSearch(props:RenamerSearchProps):JSX.Element
       theInput.current!.value,
       props.shortnameActive
     );
+  }
+
+  /** focus on the input */
+  function focusInput():void
+  {
+    theInput.current?.focus();
   }
 
   return <div className="renamer-search-wrap">
