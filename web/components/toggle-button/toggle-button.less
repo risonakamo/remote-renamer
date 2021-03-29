@@ -1,8 +1,9 @@
-// TEMPCOLOUR
-@selected-text: white;
-@selected-background: #0e0e0e;
-@deselected-text: #252525;
-@deselected-background: #e3e3e3;
+@import (reference) "css/colours";
+
+@selected-text: @theme-choice[bright1];
+@selected-background: @theme-choice[dark1];
+@deselected-text: @theme-choice[dark-grey1];
+@deselected-background: @theme-choice[light-grey1];
 
 .toggle-button
 {

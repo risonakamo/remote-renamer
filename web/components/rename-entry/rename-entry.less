@@ -1,10 +1,10 @@
-@import (reference) "css/big-rounded-input.less";
+@import (reference) "css/big-rounded-input";
+@import (reference) "css/colours";
 
-//TEMPCOLOUR
-@selected-background: #80d1ef;
-@faded-background: #e9e9e9;
-@bottom-line: 1px solid rgb(21 21 21 / 63%);
-@hover-background: #f6f8fa;
+@selected-background: @theme-choice[hightlight1];
+@faded-background: @theme-choice[light-grey1];
+@bottom-line: 1px solid @theme-choice[medium-grey];
+@hover-background: @theme-choice[light-grey1];
 
 .rename-entry
 {
@@ -29,7 +29,6 @@
     &.faded
     {
         opacity: .5;
-        background: @faded-background;
     }
 
     &:hover
