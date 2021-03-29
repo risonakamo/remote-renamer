@@ -6,6 +6,18 @@
 @bottom-line: 1px solid @theme-choice[medium-grey];
 @hover-background: @theme-choice[light-grey1];
 
+.button-sizing()
+{
+    width: 28px;
+    height: 28px;
+}
+
+.button-sizing2()
+{
+    width: 22px;
+    height: 22px;
+}
+
 .rename-entry
 {
     width: 70%;
@@ -88,17 +100,25 @@
 
                 .submit-button
                 {
+                    .button-sizing2();
                     position: absolute;
-                    top: -1px;
-                    right: -64px;
+                    top: 12px;
+                    right: -50px;
                     cursor: pointer;
                 }
+            }
+
+            .edit-entry-button
+            {
+                .button-sizing();
+                padding: 2px 0 4px 0;
             }
         }
     }
 
     .button
     {
+        .button-sizing();
         position: absolute;
         opacity: 0;
         transition: opacity .2s;
@@ -112,8 +132,8 @@
 
         &.edit-entry-button
         {
-            top: 9px;
-            right: -54px;
+            top: 19px;
+            right: -43px;
         }
     }
 }

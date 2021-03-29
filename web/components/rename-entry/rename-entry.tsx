@@ -96,12 +96,12 @@ export default function RenameEntry(props:RenameEntryProps):JSX.Element
 
   if (props.selected)
   {
-    editOrCloseButton="/assets/x_PLACEHOLDER.png";
+    editOrCloseButton="/assets/x.svg";
   }
 
   else
   {
-    editOrCloseButton="/assets/edit-entry-button_PLACEHOLDER.png";
+    editOrCloseButton="/assets/edit-entry-button.svg";
   }
 
   return <div className={cx("rename-entry",topClasses)}>
@@ -110,10 +110,10 @@ export default function RenameEntry(props:RenameEntryProps):JSX.Element
       <p className="short-name">{props.entry.shortname}</p>
 
       <div className={cx("rename-zone",renameZoneClass)}>
-        <img src="/assets/edit-entry-button_PLACEHOLDER.png"/>
+        <img src="/assets/edit-entry-button.svg" className="edit-entry-button"/>
         <div className="input-wrap">
           <input className="entry-rename" ref={renameInput} onKeyDown={renameEntryKeyHandler}/>
-          <img src="/assets/submit_PLACEHOLDER.png" className="submit-button"
+          <img src="/assets/submit.svg" className="submit-button"
             onClick={submitHandler}/>
         </div>
       </div>
