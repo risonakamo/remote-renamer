@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "build-prod":"webpack --env prod",
+    "build-prod": "webpack --env prod",
     "watch": "webpack --watch",
-    "server":"cd .. && cargo run --bin logmove-server"
+    "server": "cd .. && cargo run --bin logmove-server"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
